@@ -1,13 +1,12 @@
 //
-//  DAE.cpp
-//  dea
+//  DFA.cpp
+//  dfa
 //
 //  Created by Rosario Raulin on 24.07.13.
 //  Copyright (c) 2013 Rosario Raulin. All rights reserved.
 //
 
 #include "DFA.hpp"
-#include <iostream>
 
 DFA::DFA(const int& start, const int& states, const std::string& alphabet) :
 _start(start), _states(states), _alphabet(alphabet) {}
@@ -59,7 +58,7 @@ DFA::fillTable(bool **table) const {
         
         for (int i = 0; i < _states; ++i) {
             for (int j = 1; j < _states; ++j) {
-                if (i != j) {
+                if (i != j && !table[i][j]) {
                     for (auto alpha = _alphabet.cbegin();
                          alpha != _alphabet.cend();
                          ++alpha) {
@@ -69,7 +68,7 @@ DFA::fillTable(bool **table) const {
                         int dx = d1->second;
                         int dy = d2->second;
                         
-                        if (table[dx][dy] == true && table[i][j] == false) {
+                        if (table[dx][dy] == true) {
                             table[i][j] = true;
                             table[j][i] = true;
                             change = true;
