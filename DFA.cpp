@@ -6,24 +6,24 @@
 //  Copyright (c) 2013 Rosario Raulin. All rights reserved.
 //
 
-#include "DAE.hpp"
+#include "DFA.hpp"
 #include <iostream>
 
-DAE::DAE(const int& start, const int& states, const std::string& alphabet) :
+DFA::DFA(const int& start, const int& states, const std::string& alphabet) :
 _start(start), _states(states), _alphabet(alphabet) {}
 
 void
-DAE::addFinalState(int x) {
+DFA::addFinalState(int x) {
     _fstates.insert(x);
 }
 
 void
-DAE::addTransition(int from, char input, int to) {
+DFA::addTransition(int from, char input, int to) {
     _transitions[std::make_pair(from, input)] = to;
 }
 
 bool
-DAE::accepts(const std::string &input) const {
+DFA::accepts(const std::string &input) const {
     int state = _start;
     
     for (auto it = input.cbegin(); it != input.cend(); ++it) {
@@ -43,7 +43,7 @@ DAE::accepts(const std::string &input) const {
     algorithm.
  **/
 void
-DAE::fillTable(bool **table) const {
+DFA::fillTable(bool **table) const {
     for (auto it = _fstates.cbegin(); it != _fstates.cend(); ++it) {
         for (int i = 0; i < _states; ++i) {
             if (_fstates.find(i) == _fstates.end()) { // i is not a final state
@@ -85,7 +85,7 @@ DAE::fillTable(bool **table) const {
     Returns a map from a state to all equivalent states.
  **/
 std::map<int, std::vector<int>>
-DAE::getEquivClasses() const {
+DFA::getEquivClasses() const {
     bool** table = new bool*[_states];
     
     for (int i = 0; i < _states; ++i) {

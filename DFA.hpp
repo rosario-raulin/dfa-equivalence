@@ -1,20 +1,20 @@
 //
-//  DAE.hpp
-//  dea
+//  DFA.hpp
+//  dfa
 //
 //  Created by Rosario Raulin on 24.07.13.
 //  Copyright (c) 2013 Rosario Raulin. All rights reserved.
 //
 
-#ifndef __dea__DAE__
-#define __dea__DAE__
+#ifndef __dfa__DFA__
+#define __dfa__DFA__
 
 #include <string>
 #include <set>
 #include <map>
 #include <vector>
 
-class DAE {
+class DFA {
 private:
     const int _states;
     const std::string _alphabet;
@@ -24,7 +24,7 @@ private:
     
     void fillTable(bool** table) const;
 public:
-    DAE(const int& start, const int& states, const std::string& alphabet);
+    DFA(const int& start, const int& states, const std::string& alphabet);
     void addFinalState(int x);
     void addTransition(int from, char input, int to);
     bool accepts(const std::string& input) const;
