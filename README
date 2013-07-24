@@ -1,7 +1,8 @@
 Copright (C) 2013 Rosario Raulin
 For license information, see LICENSE.
 
-A very simple program to calculate equivalent states of a DFA written in C++.
+A very simple program to calculate equivalent states of a DFA written in C++
+(and Java).
 
 States are encoded with integers starting from 0 to N-1 for a DFA with N
 states. To create a DFA, use the DFA class:
