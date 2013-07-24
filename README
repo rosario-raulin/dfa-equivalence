@@ -1,0 +1,26 @@
+Copright (C) 2013 Rosario Raulin
+For license information, see LICENSE.
+
+A very simple program to calculate equivalent states of a DFA written in C++.
+
+States are encoded with integers starting from 0 to N-1 for a DFA with N
+states. To create a DFA, use the DAE class:
+
+  #include "DAE.hpp"
+
+  /* ... */
+
+  DAE d(0, 5, "ab");
+
+This creates a DFA with 5 states (q0 to q4) and an initial state q0. The third
+argument represents the alphabet the DFA should be able to parse.
+
+To add final states, use the addFinalState() member function.
+
+To add transitions, use the addTransition member function. It gets 3 arguments:
+  - the current state
+  - the symbol x you read
+  - the state you're in after reading x
+
+The member function getEquivClasses() returns a map from every state to a list
+of equivalent states.
